@@ -39,7 +39,7 @@ def search_data():
 
 # Create the main window
 root = tk.Tk()
-root.title("Solr Data Indexing and Searching")
+root.title("CSE573 Dark Web Crawling")
 
 # Create input fields and buttons
 tk.Label(root, text="ID:").pack()
@@ -63,7 +63,7 @@ entry_query.pack()
 tk.Button(root, text="Search Data", command=search_data).pack()
 
 # Create a text area for displaying search results
-result_text = tk.Text(root, height=10, width=50)
+result_text = tk.Text(root, height=20, width=70)
 result_text.pack()
 
 # Start the GUI event loop

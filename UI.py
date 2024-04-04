@@ -1,21 +1,17 @@
 '''
 CSE573 Semantic Web Mining
 Group #4 Project #22 Dark Web Crawling
-
 '''
 
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 import pysolr
 
-''' TODO:
-Replace solr_url with our Solr core
-'''
+#TODO: Replace link with our Solr core
 solr_url = "http://localhost:8983/solr/my_core"
 solr = pysolr.Solr(solr_url, always_commit=True)
 
 def index_data():
-    #for user inputs to get ID, Title, Content
     data = {
         "id": entry_id.get(),
         "title": entry_title.get(),
@@ -41,30 +37,45 @@ def search_data():
 root = tk.Tk()
 root.title("CSE573 Dark Web Crawling")
 
-# Create input fields and buttons
-tk.Label(root, text="ID:").pack()
-entry_id = tk.Entry(root)
-entry_id.pack()
+# Create a styled frame for the input fields
+input_frame = ttk.Frame(root, padding="10")
+input_frame.pack()
 
-tk.Label(root, text="Title:").pack()
-entry_title = tk.Entry(root)
-entry_title.pack()
+# ID input field
+ttk.Label(input_frame, text="ID:").grid(row=0, column=0, padx=5, pady=5)
+entry_id = ttk.Entry(input_frame, width=30)
+entry_id.grid(row=0, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Content:").pack()
-entry_content = tk.Text(root, height=5, width=50)
-entry_content.pack()
+# Title input field
+ttk.Label(input_frame, text="Title:").grid(row=1, column=0, padx=5, pady=5)
+entry_title = ttk.Entry(input_frame, width=30)
+entry_title.grid(row=1, column=1, padx=5, pady=5)
 
-tk.Button(root, text="Index Data", command=index_data).pack()
+# Content input field
+ttk.Label(input_frame, text="Content:").grid(row=2, column=0, padx=5, pady=5)
+entry_content = tk.Text(input_frame, height=5, width=40)
+entry_content.grid(row=2, column=1, padx=5, pady=5)
 
-tk.Label(root, text="Query:").pack()
-entry_query = tk.Entry(root)
-entry_query.pack()
+# Index button
+index_button = ttk.Button(input_frame, text="Index Data", command=index_data)
+index_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-tk.Button(root, text="Search Data", command=search_data).pack()
+# Create a styled frame for the search section
+search_frame = ttk.Frame(root, padding="10")
+search_frame.pack()
+
+# Query input field
+ttk.Label(search_frame, text="Query:").grid(row=0, column=0, padx=5, pady=5)
+entry_query = ttk.Entry(search_frame, width=30)
+entry_query.grid(row=0, column=1, padx=5, pady=5)
+
+# Search button
+search_button = ttk.Button(search_frame, text="Search Data", command=search_data)
+search_button.grid(row=0, column=2, padx=5, pady=5)
 
 # Create a text area for displaying search results
-result_text = tk.Text(root, height=20, width=70)
-result_text.pack()
+result_text = tk.Text(root, height=10, width=50)
+result_text.pack(pady=10)
 
 # Start the GUI event loop
 root.mainloop()

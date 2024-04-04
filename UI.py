@@ -1,6 +1,14 @@
 '''
 CSE573 Semantic Web Mining
 Group #4 Project #22 Dark Web Crawling
+
+Group Members:
+Arnav Aghav
+Rachel Guzman
+Yang Husurianto
+Yumi Lamansky
+Saidubabu Mallela
+Wangyang Ying
 '''
 
 import tkinter as tk

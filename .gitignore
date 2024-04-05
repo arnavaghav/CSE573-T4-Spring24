@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# Apache Solr log files
+CODE/solr/example.cloud/node1/solr/*
+CODE/solr/server/tmp/*
+CODE/solr/licenses/*
+
 # Distribution / packaging
 .Python
 build/

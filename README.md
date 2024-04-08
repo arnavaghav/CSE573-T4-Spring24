@@ -20,6 +20,7 @@ Instructions to setup the Apache Solr server will be for Windows.
 - Java 8 or greater
 - `JAVA_HOME` path set to the root Java installation folder. 
   - NOTE: This is not the `java\bin` folder.
+  - How to: https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html
   
 To start the Apache Solr server:  
 ```

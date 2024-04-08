@@ -14,7 +14,9 @@
 Abstract — Scraping the Dark Web involves extracting data from hidden online platforms that are not indexed by traditional search engines. The Dark Web is often associated with and used in the context of criminal activity due to its user anonymity and privacy features. Due to its hidden nature and extra hurdles needed to go through to reach the Dark Web compared to the worldwide web, crawling of the Dark Web allows for a glimpse into what occurs. Crawling of the Dark Web enables the extraction of information and the ability to index it for future retrieval and data analysis. In this project, we crawl the Dark Web, extract its data, and index its contents. We offer a user-friendly interface with search capabilities to examine the most recent information collected from the Dark Web.
 
 ## Apache Solr
-Instructions to setup the Apache Solr server will be for Windows.
+Instructions to setup the Apache Solr server will be for Windows. 
+- Download Link: https://solr.apache.org/downloads.html
+- We used Apache Solr 8.11.3 (solr-8.11.3.zip file)
 
 ### Prerequesites
 - Java 8 or greater

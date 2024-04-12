@@ -16,7 +16,7 @@ from tkinter import messagebox, ttk
 import pysolr
 
 #TODO: Replace link with our Solr core
-solr_url = "http://localhost:8983/solr/my_core"
+solr_url = "http://localhost:8983/solr/tor-crawl"
 solr = pysolr.Solr(solr_url, always_commit=True)
 
 # def index_data():
@@ -37,7 +37,7 @@ def search_data():
         results = solr.search(query)
         result_text.delete("1.0", tk.END)
         for result in results:
-            result_text.insert(tk.END, f"ID: {result['id']}\Title: {result['title']}\n\n") #Content: {result['content']}\n\n")
+            result_text.insert(tk.END, f"LINK: {result['link'][0]}\nContent: {result['keywords'][0]}\n\n") #Content: {result['content']}\n\n")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to search data: {e}")
 

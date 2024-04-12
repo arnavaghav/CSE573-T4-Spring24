@@ -19,17 +19,17 @@ import pysolr
 solr_url = "http://localhost:8983/solr/my_core"
 solr = pysolr.Solr(solr_url, always_commit=True)
 
-def index_data():
-    data = {
-        "id": entry_id.get(),
-        "title": entry_title.get(),
-        #"content": entry_content.get("1.0", tk.END).strip()
-    }
-    try:
-        solr.add([data])
-        messagebox.showinfo("Success", "Data indexed successfully!")
-    except Exception as e:
-        messagebox.showerror("Error", f"Failed to index data: {e}")
+# def index_data():
+#     data = {
+#         "id": entry_id.get(),
+#         "title": entry_title.get(),
+#         #"content": entry_content.get("1.0", tk.END).strip()
+#     }
+#     try:
+#         solr.add([data])
+#         messagebox.showinfo("Success", "Data indexed successfully!")
+#     except Exception as e:
+#         messagebox.showerror("Error", f"Failed to index data: {e}")
 
 def search_data():
     query = entry_query.get()
@@ -61,8 +61,8 @@ input_frame.pack()
 
 
 # Index button
-index_button = ttk.Button(input_frame, text="Index Data", command=index_data)
-index_button.grid(row=3, column=0, columnspan=2, pady=10)
+# index_button = ttk.Button(input_frame, text="Index Data", command=index_data)
+# index_button.grid(row=3, column=0, columnspan=2, pady=10)
 
 # Create a styled frame for the search section
 search_frame = ttk.Frame(root, padding="10")

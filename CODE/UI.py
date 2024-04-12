@@ -23,7 +23,7 @@ def index_data():
     data = {
         "id": entry_id.get(),
         "title": entry_title.get(),
-        "content": entry_content.get("1.0", tk.END).strip()
+        #"content": entry_content.get("1.0", tk.END).strip()
     }
     try:
         solr.add([data])
@@ -37,7 +37,7 @@ def search_data():
         results = solr.search(query)
         result_text.delete("1.0", tk.END)
         for result in results:
-            result_text.insert(tk.END, f"ID: {result['id']}\nTitle: {result['title']}\nContent: {result['content']}\n\n")
+            result_text.insert(tk.END, f"ID: {result['id']}\nTitle: {result['title']}\n\n") #Content: {result['content']}\n\n")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to search data: {e}")
 

@@ -37,7 +37,7 @@ def search_data():
         results = solr.search(query)
         result_text.delete("1.0", tk.END)
         for result in results:
-            result_text.insert(tk.END, f"ID: {result['id']}\nTitle: {result['title']}\n\n") #Content: {result['content']}\n\n")
+            result_text.insert(tk.END, f"ID: {result['id']}\Name: {result['title']}\n\n") #Content: {result['content']}\n\n")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to search data: {e}")
 
@@ -50,23 +50,19 @@ input_frame = ttk.Frame(root, padding="10")
 input_frame.pack()
 
 # ID input field
-ttk.Label(input_frame, text="ID:").grid(row=0, column=0, padx=5, pady=5)
-entry_id = ttk.Entry(input_frame, width=30)
-entry_id.grid(row=0, column=1, padx=5, pady=5)
+# ttk.Label(input_frame, text="ID:").grid(row=0, column=0, padx=5, pady=5)
+# entry_id = ttk.Entry(input_frame, width=30)
+# entry_id.grid(row=0, column=1, padx=5, pady=5)
 
-# Title input field
-ttk.Label(input_frame, text="Title:").grid(row=1, column=0, padx=5, pady=5)
-entry_title = ttk.Entry(input_frame, width=30)
-entry_title.grid(row=1, column=1, padx=5, pady=5)
+# # Title input field
+# ttk.Label(input_frame, text="Title:").grid(row=1, column=0, padx=5, pady=5)
+# entry_title = ttk.Entry(input_frame, width=30)
+# entry_title.grid(row=1, column=1, padx=5, pady=5)
 
-# Content input field
-ttk.Label(input_frame, text="Content:").grid(row=2, column=0, padx=5, pady=5)
-entry_content = tk.Text(input_frame, height=5, width=40)
-entry_content.grid(row=2, column=1, padx=5, pady=5)
 
-# Index button
-index_button = ttk.Button(input_frame, text="Index Data", command=index_data)
-index_button.grid(row=3, column=0, columnspan=2, pady=10)
+# # Index button
+# index_button = ttk.Button(input_frame, text="Index Data", command=index_data)
+# index_button.grid(row=3, column=0, columnspan=2, pady=10)
 
 # Create a styled frame for the search section
 search_frame = ttk.Frame(root, padding="10")

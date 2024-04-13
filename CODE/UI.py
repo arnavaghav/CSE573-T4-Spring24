@@ -15,6 +15,15 @@ import tkinter as tk
 from tkinter import messagebox, ttk
 import pysolr
 
+import matplotlib
+matplotlib.use('TkAgg')
+
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import (
+    FigureCanvasTkAgg,
+    NavigationToolbar2Tk
+)
+
 #TODO: Replace link with our Solr core
 solr_url = "http://localhost:8983/solr/tor-crawl"
 solr = pysolr.Solr(solr_url, always_commit=True)
@@ -40,6 +49,29 @@ def search_data():
             result_text.insert(tk.END, f"LINK: {result['link'][0]}\nContent: {result['keywords'][0]}\n\n") #Content: {result['content']}\n\n")
     except Exception as e:
         messagebox.showerror("Error", f"Failed to search data: {e}")
+        
+
+def create_chart(root):
+    drugs = {'Cocaine': 0, 'Heroin': 0, 'Marijuana': 0, 'Methamphetamine': 0, 'Opioids': 0}
+
+    for drug, _count in drugs.items():
+        query = f"keywords:{drug}"
+        results = solr.search(query)
+        drugs[drug] = len(results)
+        
+    figure = Figure(figsize=(5, 4), dpi=100)
+    
+    figure_canvas = FigureCanvasTkAgg(figure, root)
+    
+    axes = figure.add_subplot()
+    
+    axes.bar(drugs.keys(), drugs.values())
+    axes.set_title('Drug Mentions in Dark Web')
+    axes.set_xlabel('Drugs')
+    axes.set_ylabel('Mentions')
+    
+    figure_canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+        
 
 # Create the main window
 root = tk.Tk()
@@ -82,4 +114,5 @@ result_text = tk.Text(root, height=10, width=50)
 result_text.pack(pady=10)
 
 # Start the GUI event loop
+create_chart(root)
 root.mainloop()
